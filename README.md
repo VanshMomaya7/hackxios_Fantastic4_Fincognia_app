@@ -1,6 +1,6 @@
-# PaisaBuddy - Financial Coach for Gig Workers
+# Fincognia - Financial Coach for Gig Workers
 
-PaisaBuddy is an intelligent financial management app designed specifically for gig workers in India. It helps users track income, manage expenses, forecast cashflow, get tax assistance, and receive personalized financial advice through an AI-powered agent.
+Fincognia is an intelligent financial management app designed specifically for gig workers in India. It helps users track income, manage expenses, forecast cashflow, get tax assistance, and receive personalized financial advice through an AI-powered agent.
 
 ## Features
 
@@ -11,7 +11,7 @@ PaisaBuddy is an intelligent financial management app designed specifically for 
 - **Subscription Management**: Track and manage recurring payments
 - **Event Anticipation**: Get alerts for upcoming big expenses
 
-### 🤖 PaisaBuddy Agent
+### 🤖 Fincognia Agent
 - **AI-Powered Financial Assistant**: Get instant answers to financial questions
 - **Smart Insights**: Understand your spending patterns and income trends
 - **Purchase Decisions**: Quick verdict on whether you can afford a purchase
@@ -93,8 +93,8 @@ backend/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/VanshMomaya7/paisa-buddy-android-app-mumbai-hacks.git
-   cd paisa-buddy-android-app-mumbai-hacks
+   git clone https://github.com/VanshMomaya7/hackxios_Fantastic4_Fincognia_app.git
+   cd hackxios_Fantastic4_Fincognia_app
    ```
 
 2. **Install Frontend Dependencies**:
@@ -142,7 +142,7 @@ Automatically generates budgets based on income volatility, spending patterns, a
 ### Document Assistant
 Uses Google Gemini AI to analyze financial documents (insurance policies, loan documents, payout summaries) and explain them in simple language.
 
-### PaisaBuddy Agent
+### Fincognia Agent
 An AI financial coach that can:
 - Explain spending patterns
 - Help with purchase decisions
