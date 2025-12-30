@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "name": "FinTech Compliance Guardrail",
+  "description": "Reviews file changes for FinTech compliance violations including autonomous trading claims, return guarantees, and investment advice language. Creates compliance reports and audit logs.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.js",
+      "*.jsx",
+      "*.ts",
+      "*.tsx",
+      "*.sol",
+      "*.md",
+      "*.html"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Review the changed file content for FinTech compliance violations. Check for: 1) Autonomous trading claims, 2) Guarantees of returns, 3) Investment advisor language (should be assistant/co-pilot), 4) Any execution without explicit user approval. Be conservative and flag anything ambiguous.\n\nCreate/update .kiro/policy_reasoning/compliance_review.md with:\n- Status: SAFE / NEEDS_FIX\n- Quote any risky lines verbatim\n- Provide compliant replacement wording\n\nAppend to .kiro/eth_accountability/compliance_audit.log:\n- timestamp | SAFE/NEEDS_FIX | 1-line reason\n\nEnsure directories exist before writing files."
+  }
+}

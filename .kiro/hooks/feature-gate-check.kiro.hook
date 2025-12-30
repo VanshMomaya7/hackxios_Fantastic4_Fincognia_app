@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Feature Scope Gate",
+  "description": "Automatically evaluates new feature descriptions against the core product loop (SIMULATE/RESEARCH → REASON → EXPLAIN → APPROVE → ACT/PREVENT) and logs decisions to maintain scope discipline",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "*feature*.md",
+      "*Feature*.md",
+      "features/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A new feature description file has been created. Please:\n\n1. Read the new feature description file content\n2. Read .kiro/problem_decomposition/core_problem.md and .kiro/policy_reasoning/product_intent.md to understand the core product loop\n3. Evaluate if this feature strengthens the core loop: SIMULATE/RESEARCH → REASON → EXPLAIN → APPROVE → ACT/PREVENT\n4. Classify the feature as exactly one of: CORE, SUPPORTING, or OUT_OF_SCOPE\n5. Append an entry to .kiro/problem_decomposition/feature_gate.md with:\n   - Feature name\n   - Classification\n   - 2-3 line justification\n   - If OUT_OF_SCOPE: one sentence on how to reframe it to fit the loop (or drop it)\n6. Append to .kiro/decision_logs/feature_gate.log with format: timestamp | feature | classification\n\nRemember: No UI-only features are allowed. Features must strengthen the core decision-making loop."
+  }
+}
