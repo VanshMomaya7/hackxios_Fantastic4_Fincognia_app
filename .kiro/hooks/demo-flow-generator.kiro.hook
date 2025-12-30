@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Demo Flow Generator",
+  "description": "Monitors changes to agentic_loop.graph.md, compliance_review.md, and feature_gate.md to automatically generate or update demo scripts and readiness logs for judge presentations",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      ".kiro/agentic_loop.graph.md",
+      ".kiro/compliance_review.md",
+      ".kiro/feature_gate.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Based on the updated files, generate judge-facing demo flow and failure handling:\n\n1. Read current agentic_loop.graph.md, compliance_review.md status, and feature_gate.md summary\n2. Create/Update .kiro/failure_playbooks/demo_script.md with:\n   - 5-step demo sequence (tight and focused)\n   - 1 failure case + recovery procedure\n   - 3 judge questions + short answers\n3. Append to .kiro/decision_logs/demo_ready.log:\n   - timestamp | READY/NOT_READY | blocker (if any)\n   \nIf compliance status is NEEDS_FIX, mark NOT_READY and cite the specific blocker."
+  }
+}

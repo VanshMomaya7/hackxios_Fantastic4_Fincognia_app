@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Problem Statement Integrity Checker",
+  "description": "Enforces single-problem clarity and USP integrity when Problem Statement files are edited by checking core problem focus, target users, and USP compliance",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*problem_statement*",
+      "*Problem_Statement*",
+      "*PROBLEM_STATEMENT*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Task: Enforce single-problem clarity and USP integrity.\nInputs:\n- The edited Problem Statement file content.\n- Refer to these Kiro artifacts as ground truth:\n  - .kiro/problem_decomposition/core_problem.md (if missing, create it)\n  - .kiro/policy_reasoning/product_intent.md (if missing, create it)\nChecks:\n1) Exactly ONE core problem is stated (not multiple domains/features).\n2) Target users explicitly include youth + Tier-3/4 (or non-metro first-time investors).\n3) USP remains: agentic system that researches → explains → requires explicit approval → executes (no autonomy).\n4) No \"guaranteed returns\" / \"autonomous trading\" language.\nOutput:\nA) Update/Create: .kiro/problem_decomposition/ps_integrity.md\n   - Status: PASS/FAIL\n   - If FAIL: quote the exact offending sentences and provide minimal rewrite.\nB) Append a single-line entry to: .kiro/decision_logs/ps_integrity.log\n   - timestamp | PASS/FAIL | 1-line reason\nDo not add marketing language. Be strict."
+  }
+}

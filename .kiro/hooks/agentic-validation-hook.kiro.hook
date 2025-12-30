@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "name": "Agentic System Validator",
+  "description": "Validates that updated agent flow/user journey documents contain all required agentic elements: research step, reasoning across alternatives, simple explanations, explicit approval gates, and execution steps. Updates decision graphs and logs validation results.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/agent_flow*.md",
+      "**/user_journey*.md",
+      "**/*agentic*.md",
+      "**/*flow*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Task: Validate the system is truly agentic and approval-gated.\n\nAnalyze the updated agent flow/user journey document and check for ALL required elements:\n\nChecklist (must all be present):\n1) Research/data gathering step\n2) Reasoning/simulation across alternatives  \n3) Explanation in simple terms\n4) Explicit user approval gate\n5) Execution OR preventive action\n\nThen perform these actions:\n\nA) Update .kiro/decision_graphs/agentic_loop.graph.md with a clean, numbered flow:\n   1. ...\n   2. ...\n   Include where Approval Gate blocks execution.\n\nB) Append to .kiro/decision_logs/agentic_loop.log:\n   - timestamp | PASS/FAIL | missing steps (if any)\n\nIf any step is missing, mark FAIL and specify the exact section where to add it."
+  }
+}

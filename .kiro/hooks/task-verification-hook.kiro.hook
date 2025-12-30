@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Task Verification",
+  "description": "Verifies that tasks marked as \"Done\" meet acceptance criteria, are demo-ready (can be shown in under 60 seconds), and don't introduce compliance violations. Logs results and creates fix checklists for rejected tasks.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Please verify this task is demo-ready by checking: 1) Are acceptance criteria satisfied? 2) Can it be demoed in under 60 seconds? 3) Are there any compliance violations? Based on the task title, description, and acceptance criteria provided, append results to .kiro/decision_logs/task_verification.log with format: timestamp | task | ACCEPTED/REJECTED | missing item. If REJECTED, also append a fix checklist to .kiro/failure_playbooks/incomplete_tasks.md under the task name. Keep it short and actionable."
+  }
+}
