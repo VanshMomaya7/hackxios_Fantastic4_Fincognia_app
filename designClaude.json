@@ -1,0 +1,390 @@
+{
+    "designSystem": {
+      "name": "Modern Fintech UI",
+      "version": "1.0",
+      "description": "Clean, minimalist fintech design with vibrant accents and strong visual hierarchy"
+    },
+    
+    "designPrinciples": {
+      "clarity": "Information is presented clearly with strong visual hierarchy and scannable layouts",
+      "minimalism": "Clean interfaces with generous white space and minimal decorative elements",
+      "trust": "Professional appearance with clear data visualization and organized information architecture",
+      "vibrancy": "Strategic use of bright, saturated colors for branding and key actions",
+      "accessibility": "High contrast, readable typography, and clear interactive elements"
+    },
+  
+    "colorPalette": {
+      "primary": {
+        "blue": "#0066FF",
+        "description": "Primary brand color for key actions, headers, and important UI elements",
+        "usage": "Primary buttons, active states, links, key brand elements"
+      },
+      "accent": {
+        "cyan": "#00D4FF",
+        "brightGreen": "#00FF9D",
+        "purple": "#A855F7",
+        "pink": "#EC4899",
+        "description": "Vibrant accent colors for categorization, icons, and visual interest",
+        "usage": "Transaction icons, charts, category badges, status indicators"
+      },
+      "neutral": {
+        "white": "#FFFFFF",
+        "background": "#F8F9FB",
+        "lightGray": "#F3F4F6",
+        "mediumGray": "#9CA3AF",
+        "darkGray": "#6B7280",
+        "black": "#1F2937",
+        "description": "Neutral scale for backgrounds, text, and subtle UI elements",
+        "usage": "Backgrounds, cards, text hierarchy, borders"
+      },
+      "semantic": {
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "error": "#EF4444",
+        "positive": "+CHF values in green",
+        "negative": "-CHF values in dark text"
+      }
+    },
+  
+    "typography": {
+      "fontFamily": {
+        "primary": "SF Pro Display, -apple-system, BlinkMacSystemFont, system-ui, sans-serif",
+        "fallback": "Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+        "description": "Native system fonts for optimal rendering and familiarity"
+      },
+      "scale": {
+        "display": {
+          "size": "34px",
+          "weight": "700",
+          "lineHeight": "1.2",
+          "usage": "Large numbers, monetary values, key metrics"
+        },
+        "h1": {
+          "size": "28px",
+          "weight": "700",
+          "lineHeight": "1.3",
+          "usage": "Screen titles, main headings"
+        },
+        "h2": {
+          "size": "22px",
+          "weight": "600",
+          "lineHeight": "1.3",
+          "usage": "Section headers, card titles"
+        },
+        "h3": {
+          "size": "17px",
+          "weight": "600",
+          "lineHeight": "1.4",
+          "usage": "List item titles, sub-headers"
+        },
+        "body": {
+          "size": "15px",
+          "weight": "400",
+          "lineHeight": "1.5",
+          "usage": "Primary body text, descriptions"
+        },
+        "caption": {
+          "size": "13px",
+          "weight": "400",
+          "lineHeight": "1.4",
+          "usage": "Secondary information, labels, metadata"
+        },
+        "small": {
+          "size": "11px",
+          "weight": "500",
+          "lineHeight": "1.4",
+          "usage": "Badges, status labels, timestamps"
+        }
+      },
+      "hierarchy": {
+        "primary": "Dark gray to black (#1F2937) for main content",
+        "secondary": "Medium gray (#6B7280) for supporting text",
+        "tertiary": "Light gray (#9CA3AF) for metadata and subtle information"
+      }
+    },
+  
+    "spacing": {
+      "scale": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px"
+      },
+      "patterns": {
+        "screenPadding": "20-24px horizontal padding on mobile screens",
+        "cardPadding": "20px internal padding for cards",
+        "listItemSpacing": "16px between list items",
+        "sectionSpacing": "32px between major sections",
+        "elementSpacing": "12px between related elements within a card"
+      }
+    },
+  
+    "layout": {
+      "structure": {
+        "maxWidth": "Mobile-first with full-width containers",
+        "alignment": "Left-aligned text, centered numeric displays",
+        "grid": "Single column on mobile with clear vertical rhythm"
+      },
+      "containers": {
+        "screen": "Full height with navigation header and content area",
+        "card": "Rounded corners (12-16px), subtle shadow, white background",
+        "modal": "Centered overlay with rounded corners and backdrop"
+      }
+    },
+  
+    "components": {
+      "buttons": {
+        "primary": {
+          "background": "Bright blue (#0066FF) or cyan gradient",
+          "text": "White, bold weight",
+          "borderRadius": "12-16px",
+          "padding": "16px 24px",
+          "minHeight": "52px",
+          "fontSize": "17px",
+          "shadow": "Subtle shadow for depth"
+        },
+        "secondary": {
+          "background": "Transparent or light gray",
+          "text": "Primary blue",
+          "border": "1px solid border or none",
+          "borderRadius": "12px"
+        },
+        "text": {
+          "background": "Transparent",
+          "text": "Primary blue",
+          "padding": "8px 12px"
+        }
+      },
+      
+      "cards": {
+        "standard": {
+          "background": "White",
+          "borderRadius": "16-20px",
+          "padding": "20-24px",
+          "shadow": "0 2px 8px rgba(0,0,0,0.06)",
+          "border": "None or 1px solid #F3F4F6"
+        },
+        "elevated": {
+          "background": "White",
+          "borderRadius": "20-24px",
+          "shadow": "0 4px 16px rgba(0,0,0,0.08)",
+          "usage": "Feature cards, primary content containers"
+        },
+        "glass": {
+          "background": "rgba(255,255,255,0.95) with backdrop blur",
+          "borderRadius": "20px",
+          "shadow": "Soft shadow",
+          "usage": "Overlays, modal cards, floating elements"
+        }
+      },
+  
+      "lists": {
+        "transactionItem": {
+          "structure": "Icon + Title/Subtitle + Amount + Chevron",
+          "height": "64-72px",
+          "padding": "12-16px vertical",
+          "separator": "1px solid #F3F4F6 between items",
+          "icon": {
+            "size": "40-44px",
+            "style": "Rounded square (8-10px radius) with brand colors",
+            "placement": "Left aligned"
+          },
+          "content": {
+            "title": "Bold or semi-bold, primary color",
+            "subtitle": "Regular weight, secondary gray",
+            "spacing": "4px between title and subtitle"
+          },
+          "amount": {
+            "alignment": "Right aligned",
+            "style": "Bold, larger size",
+            "color": "Positive in green, negative in dark"
+          },
+          "chevron": {
+            "size": "20px",
+            "color": "Light gray",
+            "placement": "Far right"
+          }
+        }
+      },
+  
+      "inputs": {
+        "textField": {
+          "height": "48-52px",
+          "padding": "12-16px horizontal",
+          "borderRadius": "12px",
+          "border": "1px solid #E5E7EB",
+          "background": "White or light gray (#F9FAFB)",
+          "focusState": "Blue border, subtle shadow",
+          "placeholder": "Medium gray color"
+        },
+        "search": {
+          "icon": "Magnifying glass on left",
+          "borderRadius": "12px",
+          "background": "Light gray (#F3F4F6)",
+          "border": "None or subtle"
+        }
+      },
+  
+      "navigation": {
+        "header": {
+          "height": "56-64px",
+          "background": "White or transparent",
+          "borderBottom": "1px solid #F3F4F6 or none",
+          "title": "Centered or left-aligned, bold",
+          "backButton": "Left-aligned arrow icon",
+          "actionButtons": "Right-aligned icons"
+        },
+        "tabBar": {
+          "height": "48px",
+          "background": "Transparent or light background",
+          "activeIndicator": "Blue underline or filled background",
+          "labels": "Medium weight, uppercase or title case"
+        }
+      },
+  
+      "badges": {
+        "status": {
+          "padding": "4px 12px",
+          "borderRadius": "6-8px",
+          "fontSize": "11-12px",
+          "fontWeight": "600",
+          "textTransform": "uppercase",
+          "colors": {
+            "warning": "Orange background with dark orange text",
+            "success": "Green background with dark green text",
+            "info": "Blue background with dark blue text"
+          }
+        }
+      },
+  
+      "charts": {
+        "lineChart": {
+          "lineWidth": "2-3px",
+          "colors": "Blue for primary, red/pink for secondary",
+          "style": "Smooth curves, minimal grid lines",
+          "background": "Transparent or subtle gradient"
+        },
+        "barChart": {
+          "barWidth": "Responsive to container",
+          "colors": "Bright green with gradient",
+          "spacing": "Minimal gap between bars",
+          "corners": "Rounded tops"
+        }
+      },
+  
+      "icons": {
+        "style": "Outline or filled, consistent stroke width",
+        "size": {
+          "small": "16-20px",
+          "medium": "24px",
+          "large": "32-40px"
+        },
+        "color": "Match semantic meaning or brand color",
+        "usage": {
+          "brandIcons": "Colorful circular backgrounds with brand logos",
+          "systemIcons": "Monochrome, outline style",
+          "categoryIcons": "Vibrant backgrounds with white symbols"
+        }
+      }
+    },
+  
+    "animations": {
+      "timing": {
+        "fast": "150-200ms for micro-interactions",
+        "normal": "250-350ms for standard transitions",
+        "slow": "400-600ms for page transitions"
+      },
+      "easing": {
+        "standard": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "decelerate": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+        "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)"
+      },
+      "patterns": {
+        "buttonPress": "Scale down slightly (0.95) with quick timing",
+        "cardHover": "Subtle lift with shadow increase",
+        "pageTransition": "Slide from right with fade",
+        "listItemAppear": "Fade up with slight delay per item"
+      }
+    },
+  
+    "effects": {
+      "shadows": {
+        "small": "0 1px 3px rgba(0,0,0,0.08)",
+        "medium": "0 2px 8px rgba(0,0,0,0.08)",
+        "large": "0 4px 16px rgba(0,0,0,0.1)",
+        "float": "0 8px 24px rgba(0,0,0,0.12)"
+      },
+      "blur": {
+        "backdrop": "blur(20px) for glass morphism effects",
+        "usage": "Modal overlays, floating cards"
+      },
+      "gradients": {
+        "buttonPrimary": "Linear gradient with vibrant blues/cyans",
+        "backgroundAccent": "Subtle gradients for visual interest",
+        "chartFills": "Vertical gradients from solid to transparent"
+      }
+    },
+  
+    "visualStyle": {
+      "borderRadius": {
+        "small": "8px for compact elements",
+        "medium": "12-16px for cards and buttons",
+        "large": "20-24px for major containers",
+        "full": "9999px for circular elements"
+      },
+      "whitespace": {
+        "philosophy": "Generous spacing creates breathing room and hierarchy",
+        "cardPadding": "20-24px creates comfortable boundaries",
+        "sectionGaps": "32-48px separates major sections"
+      },
+      "contrast": {
+        "text": "High contrast (WCAG AA minimum) for readability",
+        "colors": "Vibrant accent colors against neutral backgrounds",
+        "importance": "Size, weight, and color create clear hierarchy"
+      }
+    },
+  
+    "dataVisualization": {
+      "numbers": {
+        "largeValues": "Bold, 28-34px, prominent display",
+        "currency": "Include currency symbol, thousand separators",
+        "positive": "Green color with + prefix",
+        "negative": "Dark color with - prefix (no red to avoid alarm)"
+      },
+      "charts": {
+        "colors": "Use brand colors consistently",
+        "simplicity": "Minimal grid lines and labels",
+        "interactivity": "Tooltips on hover, smooth animations"
+      },
+      "metadata": {
+        "timestamps": "Small, gray text below main content",
+        "categories": "Small uppercase labels",
+        "accounts": "Subtle secondary text with account name"
+      }
+    },
+  
+    "responsivePatterns": {
+      "mobile": {
+        "approach": "Single column, full-width elements",
+        "touch": "Minimum 44x44px touch targets",
+        "scrolling": "Natural vertical scroll with fixed header",
+        "bottomActions": "Primary actions at bottom of screen when needed"
+      }
+    },
+  
+    "accessibility": {
+      "contrast": "Minimum 4.5:1 for normal text, 3:1 for large text",
+      "focusStates": "Visible focus indicators on all interactive elements",
+      "touchTargets": "Minimum 44x44px for all buttons and links",
+      "textSize": "Minimum 15px for body text, scalable with system settings"
+    },
+  
+    "implementation": {
+      "mobileFirst": "Design and build for mobile viewport first",
+      "performance": "Optimize images, use CSS transforms for animations",
+      "nativePatterns": "Follow iOS/Android native patterns for familiarity",
+      "consistency": "Reuse components with consistent styling throughout app"
+    }
+  }

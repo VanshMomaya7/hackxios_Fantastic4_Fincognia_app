@@ -1,0 +1,215 @@
+/**
+ * Register Screen
+ * Email/Password registration
+ */
+
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+  Alert,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { firebaseAuth } from '../../config/firebase';
+import { useAuthStore } from '../../store/useAuthStore';
+import { createUserProfile } from '../../services/userService';
+import { Button, Input, Card } from '../../components/ui';
+import { colors, typography, spacing } from '../../constants/designTokens';
+
+export default function RegisterScreen() {
+  const navigation = useNavigation();
+  const login = useAuthStore((state) => state.login);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<{
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  }>({});
+
+  const validate = () => {
+    const newErrors: {
+      email?: string;
+      password?: string;
+      confirmPassword?: string;
+    } = {};
+    
+    if (!email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    
+    if (!password) {
+      newErrors.password = 'Password is required';
+    } else if (password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    
+    if (!confirmPassword) {
+      newErrors.confirmPassword = 'Please confirm your password';
+    } else if (password !== confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleRegister = async () => {
+    if (!validate()) return;
+
+    setLoading(true);
+    try {
+      // Create Firebase Auth user
+      const userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Create user profile in Firestore
+      await createUserProfile(user.uid, email);
+
+      // Update auth store
+      login({
+        id: user.uid,
+        email: user.email || undefined,
+      });
+    } catch (error: any) {
+      console.error('Registration error:', error);
+      Alert.alert(
+        'Registration Failed',
+        error.message || 'An error occurred during registration. Please try again.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.keyboardView}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled">
+          <View style={styles.header}>
+            <Text style={styles.title}>Create Account</Text>
+            <Text style={styles.subtitle}>Sign up to get started</Text>
+          </View>
+
+          <Card style={styles.card}>
+            <Input
+              label="Email"
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Enter your email"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoComplete="email"
+              error={errors.email}
+            />
+
+            <Input
+              label="Password"
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Create a password"
+              secureTextEntry
+              autoCapitalize="none"
+              autoComplete="password-new"
+              error={errors.password}
+            />
+
+            <Input
+              label="Confirm Password"
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              placeholder="Confirm your password"
+              secureTextEntry
+              autoCapitalize="none"
+              autoComplete="password-new"
+              error={errors.confirmPassword}
+            />
+
+            <Button
+              title="Sign Up"
+              onPress={handleRegister}
+              loading={loading}
+              style={styles.button}
+            />
+          </Card>
+
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>Already have an account? </Text>
+            <Text
+              style={styles.footerLink}
+              onPress={() => navigation.navigate('Login' as never)}>
+              Sign In
+            </Text>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.neutral.background,
+  },
+  keyboardView: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    padding: spacing.screenPadding,
+    justifyContent: 'center',
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: spacing.xl,
+  },
+  title: {
+    fontSize: typography.size.h1,
+    fontWeight: typography.weight.bold,
+    color: colors.neutral.black,
+    marginBottom: spacing.sm,
+  },
+  subtitle: {
+    fontSize: typography.size.body,
+    color: colors.neutral.darkGray,
+  },
+  card: {
+    marginBottom: spacing.lg,
+  },
+  button: {
+    marginTop: spacing.md,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerText: {
+    fontSize: typography.size.body,
+    color: colors.neutral.darkGray,
+  },
+  footerLink: {
+    fontSize: typography.size.body,
+    color: colors.primary.blue,
+    fontWeight: typography.weight.semiBold,
+  },
+});
+
+
