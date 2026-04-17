@@ -1,0 +1,73 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Firebase
+firebase-service-account.json
+firebase-service-account.json.json
+
+# Build outputs
+build/
+dist/
+*.apk
+*.aab
+*.ipa
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# React Native
+.metro-health-check*
+.expo/
+
+# Android
+FincogniaApp/android/.gradle/
+FincogniaApp/android/app/build/
+FincogniaApp/android/build/
+FincogniaApp/android/local.properties
+FincogniaApp/android/*.keystore
+!FincogniaApp/android/app/debug.keystore
+FincogniaApp/android/.cxx/
+
+# iOS
+FincogniaApp/ios/Pods/
+FincogniaApp/ios/build/
+FincogniaApp/ios/DerivedData/
+FincogniaApp/ios/*.xcworkspace
+FincogniaApp/ios/*.xcuserdata
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/temp/
+backend/uploads/
+backend/generated/
+backend/config/firebase-service-account.json
+backend/config/firebase-service-account.json.json
+
